@@ -3,7 +3,7 @@ $(function(){
   const $tableContainer = $('.table-container');
 
   function searchCountries(){
-    const countryName = $('.country-name').val();
+    let countryName = $('.country-name').val();
     if(!countryName.length){
       countryName = 'Poland';
     }
@@ -14,6 +14,7 @@ $(function(){
       error: function (xhr, ajaxOptions, thrownError) {
         if(xhr.status == 404){
           $tableContainer.empty();
+          $('.country-name').val('');
           $('<h1>').text('No Such Country!').addClass('error').appendTo('main');
         }
       }
@@ -24,6 +25,7 @@ $(function(){
     const $error = $('.error');
     $tableContainer.empty();
     $error.remove();
+    $('.country-name').val('');
     resp.forEach(function(item){
       let $tr = $('<tr>');
       $tr.append($('<img src=' + item.flag + '>'));
@@ -33,6 +35,7 @@ $(function(){
       $('<td>').text(item.currencies[0].code).appendTo($tr);
 
       $tr.appendTo($tableContainer);
+
     });
   }
 
