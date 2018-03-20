@@ -4,49 +4,57 @@
 }
 
 body {
-  background: -webkit-gradient(linear, left top, right top, from(#2a8e5f), to(#2a8e41));
-  background: linear-gradient(to right, #2a8e5f, #2a8e41);
+  height: 100vh;
+  margin: 0;
+  background: -webkit-gradient(linear, right top, left top, from(#6FE86F), to(#74E8A8));
+  background: linear-gradient(to left, #6FE86F, #74E8A8);
+}
+
+.overlay {
+  margin: 0 auto;
+  min-height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 main {
+  padding-top: 50px;
+  color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-main h2 {
-  margin-top: 50px;
 }
 
 main .search {
-  margin: 20px 0;
+  margin: 50px 0;
   padding: 10px 20px;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.7);
   border: none;
   border-radius: 10px;
   cursor: pointer;
+}
+
+main .country-name {
+  padding: 5px 10px;
+  font-size: 1.2em;
+  margin-top: 20px;
+  min-width: 400px;
 }
 
 main .container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-}
-
-main .container div {
-  padding: 10px;
 }
 
 main .container img {
@@ -55,22 +63,15 @@ main .container img {
   padding: 10px 20px;
 }
 
-main .country-name {
-  padding: 5px 10px;
-  font-size: 1.2em;
-}
-
-main .container {
-  margin-top: 30px;
-}
-
 main thead {
   padding: 20px;
 }
 
 main thead th {
   padding: 20px 50px;
-  font-size: 18px;
+  font-size: 26px;
+  color: #fff;
+  border: none;
 }
 
 main tbody {
@@ -78,10 +79,11 @@ main tbody {
 }
 
 main tbody tr {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 main tbody tr td {
+  color: #fff;
   font-weight: bold;
   text-align: center;
   font-size: 18px;
@@ -92,6 +94,6 @@ main tbody tr td {
   text-align: center;
   font-weight: bold;
   padding: 30px 50px;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.7);
   color: #f90909;
 }
