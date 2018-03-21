@@ -1,20 +1,22 @@
 * {
+  letter-spacing: 2px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 body {
+  font-family: 'PT Sans', sans-serif;
   height: 100vh;
   margin: 0;
-  background: -webkit-gradient(linear, right top, left top, from(#6FE86F), to(#74E8A8));
-  background: linear-gradient(to left, #6FE86F, #74E8A8);
+  background: -webkit-gradient(linear, right top, left top, from(#60c460), to(#74E8A8));
+  background: linear-gradient(to left, #60c460, #74E8A8);
 }
 
 .overlay {
   margin: 0 auto;
   min-height: 100vh;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 main {
@@ -38,15 +40,16 @@ main {
 main .search {
   margin: 50px 0;
   padding: 10px 20px;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.4);
   border: none;
   border-radius: 10px;
+  font-weight: bold;
   cursor: pointer;
 }
 
 main .country-name {
   padding: 5px 10px;
-  font-size: 1.2em;
+  font-size: 1.1em;
   margin-top: 20px;
   min-width: 400px;
 }
@@ -69,7 +72,7 @@ main thead {
 
 main thead th {
   padding: 20px 50px;
-  font-size: 26px;
+  font-size: 24px;
   color: #fff;
   border: none;
 }
@@ -79,7 +82,7 @@ main tbody {
 }
 
 main tbody tr {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 main tbody tr td {
