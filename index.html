@@ -9,28 +9,18 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <div class="overlay">
     <main>
       <h1>Country search engine</h1>
-      <input class="country-name" type="text" placeholder="ex. Poland">
-      <button class="search">Search a country</button>
-      <h2>List of countries:</h2>
+      <form action="">
+        <input class="country-name-input" type="text" placeholder="ex. Poland">
+        <button class="search">Search a country</button>
+      </form>
       <div class="container">
-        <table>
-          <thead>
-            <th>Flag:</th>
-            <th>Name:</th>
-            <th>Capital:</th>
-            <th>Language:</th>
-            <th>Currency:</th>
-          </thead>
-          <tbody class='table-container'></tbody>
-        </table>
+        <ul class='country-list'></ul>
       </div>
   </main>
-</div>
 
+  <script src='https://cdn.jsdelivr.net/npm/sweetalert2' type="text/javascript"></script>
   <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="

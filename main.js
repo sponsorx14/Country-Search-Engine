@@ -1,48 +1,48 @@
 $(function(){
   const url = 'https://restcountries.eu/rest/v2/name/';
   const $tableContainer = $('.table-container');
+  const countriesList = $('.country-list');
 
-  function searchCountries(){
-    let countryName = $('.country-name').val();
-    if(!countryName.length){
-      countryName = 'Poland';
-    }
-    $.ajax({
-      url: url + countryName,
-      method: 'GET',
-      success: showCountriesList,
-      error: function (xhr, ajaxOptions, thrownError) {
-        if(xhr.status == 404){
-          $tableContainer.empty();
-          $('.country-name').val('');
-          $('<h1>').text('No Such Country!').addClass('error').appendTo('main');
-        }
-      }
-    });
-  }
+
+  const searchCountries = country => (new Promise((resolve, reject) => {
+    fetch(`${url}${country}`)
+      .then(data => data.json())
+      .then(data => showCountriesList(data))
+      .catch(error => sweetAlert('Oops...', 'No such country', 'error'))
+  }));
 
   function showCountriesList(resp){
-    const $error = $('.error');
-    $tableContainer.empty();
-    $error.remove();
-    $('.country-name').val('');
+    countriesList.empty();
+    $('.country-name-input').val('');
     resp.forEach(function(item){
-      let $tr = $('<tr>');
-      $tr.append($('<img src=' + item.flag + '>'));
-      $('<td>').text(item.name).appendTo($tr);
-      $('<td>').text(item.capital).appendTo($tr);
-      $('<td>').text(item.languages[0].name).appendTo($tr);
-      $('<td>').text(item.currencies[0].code).appendTo($tr);
-
-      $tr.appendTo($tableContainer);
-
+      const country = $('<li>').addClass('country');
+      const countryDetails = $('<table><tbody>').addClass('country-details');
+      const countryFigure = $('<figure>').addClass('country-name');
+      const countryFigcaption = $('<figcaption>');
+      $('<h1>').text(item.name).appendTo(countryFigcaption);
+      $('<img>').attr('alt', 'Country flag').attr('src', item.flag).addClass('country-flag').appendTo(countryFigure);
+      $('<tr>' + '<td>' + 'Capital name:' + '</td>' + '<td>' + item.capital + '</td>' + '</tr>').addClass('country-capital').appendTo(countryDetails);
+      $('<tr>' + '<td>' + 'Currency:' + '</td>' + '<td>' + item.currencies[0].code + '</td>' + '</tr>').addClass('country-currency').appendTo(countryDetails);
+      $('<tr>' + '<td>' + 'Language: ' + '</td>' + '<td>' + item.languages[0].nativeName + '</td>' + '</tr>').addClass('country-language').appendTo(countryDetails);
+      $('<tr>' + '<td>' + 'Native name:' + '</td>' + '<td>' + item.nativeName + '</td>' + '</tr>').addClass('country-native-name').appendTo(countryDetails);
+      $('<tr>' + '<td>' + 'Population:' + '</td>' + '<td>' + (item.population / 1000000).toFixed(2) + ' mln' + '</td>' + '</tr>').addClass('country-population').appendTo(countryDetails);
+      $('<tr>' + '<td>' + 'Sub region:' + '</td>' + '<td>' + item.subregion + '</td>' + '</tr>').addClass('country-region').appendTo(countryDetails);
+      countryFigcaption.appendTo(countryFigure);
+      countryFigure.appendTo(country);
+      countryDetails.appendTo(country);
+      country.appendTo(countriesList);
     });
   }
 
-  $('.search').click(searchCountries);
+  $('.search').click(function(e){
+    e.preventDefault();
+    let countryName = $('.country-name-input').val();
+    searchCountries(countryName);
+  });
   $('body').keypress((e) => {
     if(e.keyCode == 13) {
-      searchCountries();
+      let countryName = $('.country-name-input').val();
+      searchCountries(countryName);
     }
   });
 });
